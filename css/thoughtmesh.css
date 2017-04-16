@@ -1,0 +1,80 @@
+.tm_footer {
+    padding:22px 0px 10px 0px;
+    margin-top:28px;
+    max-width:700px;
+    margin-left:initial;
+    margin-right:initial;
+    background-color:#f5f5f5;
+    position:relative;
+    border:solid 1px #eeeeee;
+}
+.tm_logo {
+    position:absolute;
+    top:-18px;
+    left:22px;
+    font-size:16px;
+    font-weight:bold;
+    color:#25c394;
+    padding:6px 12px 6px 12px;
+    background-color:#e9e9e9;
+    border-radius:5px;
+}
+.tm_logo .glyphicon {
+    font-size:smaller;
+    color:#aaa;
+}
+.to_tm_button {
+    padding:12px 0px 12px 0px;
+}
+.tm-no-match {
+    font-size:13px;
+    padding-top:6px;
+    text-align:center;
+}
+.tm-header {
+    color:#888888;
+}
+.tm-tag {
+    color:#26d19d;
+    text-align:right;
+}
+.tm-tag .glyphicon {
+    top:2px;
+    cursor:pointer;
+    color:#26d19d;
+}
+.tm-tag .glyphicon:hover {
+    text-decoration:none;
+}
+.tm-link, .tm-text {
+    cursor:pointer; color:#1d9b76; 
+}
+.tm-link:hover, .tm-text:hover {
+    text-decoration:underline; color:#1d9b76; 
+}
+
+/* Modal */
+#bootbox-thoughtmesh-content {
+    font-size:14px;
+}
+#bootbox-thoughtmesh-content .tm-anchor {
+    margin-top:6px;
+}
+#bootbox-thoughtmesh-content .tm-excerpt {
+    margin-bottom:6px;
+}
+.thoughtmesh_bootbox .modal-body {
+    overflow:auto;
+}
+.thoughtmesh_bootbox a {
+    color:#1d9b76; text-decoration:none;
+}
+.thoughtmesh_bootbox a:hover {
+    text-decoration:underline;
+}
+.thoughtmesh_bootbox .tm-header {
+    margin-top:6px;
+}
+.thoughtmesh_bootbox .tab-pane {
+    margin-top:20px;
+}
