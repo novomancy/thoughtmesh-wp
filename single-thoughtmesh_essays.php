@@ -17,6 +17,8 @@ get_header(); ?>
 
             <?php the_post_navigation( array( 'prev_text' => '<span class="title">' . __( 'Previous post', 'scrawl' ) . '</span>%title', 'next_text' => '<span class="title">' . __( 'Next post', 'scrawl' ) . '</span>%title' ) ); ?>
 
+            <div id="tm_container"></div>
+
             <div id="tm_footer">
                 <div id="lexia-exerpts" style="border: 1px solid black; padding: 10px;">
                     <div id="lexias-out" style="display: block;">
@@ -41,8 +43,7 @@ get_header(); ?>
                             echo "options.externalTags.push(\"$tag->name\");\n";
                         }
                     ?>                     
-                    jQuery('#tm_footer').thoughtmesh(options);
-                    console.log(options);
+                    jQuery('#tm_container').thoughtmesh(options);
                 });
             </script>
 

@@ -178,7 +178,7 @@
                 var $header = $("<div class='row'><div class='col-md-2 col-sm-2 col-xs-2'></div><div class='col-md-6 col-sm-6 col-xs-10'><div class=\"tm-header\">Related documents</div></div><div class='col-md-4 col-sm-4 hidden-xs'><div class=\"tm-header\">Related keywords</div></div></div>").appendTo($wrapper);
             };
             // Opens Information box modal
-            $wrapper.find('.glyphicon:first').click(function() {
+            $wrapper.find('.icon-tag:first').click(function() {
                 bootbox.dialog({
                     message: '<p>ThoughtMesh is an unusual model for publishing and discovering scholarly papers online. It gives readers a tag-based navigation system that uses keywords to connect excerpts of essays published on different Web sites.</p><p>Add your Scalar book to the mesh, and ThoughtMesh gives readers a tag cloud that enables nonlinear access to text excerpts. You can navigate across excerpts both within the original essay and from related essays distributed across the mesh.</p>By clicking tags in the ThoughtMesh plugin you can view a list of excerpts of other pages of this book or of other articles similarly tagged, and jump right to one of those sections.</p><form class="to_tm_button" action="http://thoughtmesh.net" target="_blank"><button class="btn btn-primary" type="submit">ThoughtMesh home page</button></form>',
                     title: 'What is ThoughtMesh?',
@@ -199,7 +199,7 @@
                 // Tags
                 var their_tags = obj.external[i].tags;
                 for (var j in obj.external[i].matched_tags) {
-                    var $glyph = $('<a href="javascript:void(null);" class="glyphicon glyphicon-tag" data-toggle="tooltip" data-placement="top" title="' + obj.external[i].matched_tags[j] + '"></a>').appendTo($row.children('.tm-tag'));
+                    var $glyph = $('<a href="javascript:void(null);" class="icon-tag" data-toggle="tooltip" data-placement="top" title="' + obj.external[i].matched_tags[j] + '"></a>').appendTo($row.children('.tm-tag'));
                     $glyph.data('tm-tag', obj.external[i].matched_tags[j]);
                 };
                 $row.children('.tm-tag').children().click(tagModal);
@@ -224,7 +224,7 @@
         };
         // !!! directly references bookId (why?), must generalize
         // Go ahead and generate if it hasn't happened already
-        if ($.isEmptyObject(localStorage[opts.namespace]) || 'undefined' == typeof(JSON.parse(localStorage[opts.namespace]).bookId) || opts.book_id != JSON.parse(localStorage[opts.namespace]).bookId) {
+        if ($.isEmptyObject(localStorage[opts.namespace]) || (opts.platform == "scalar" && ('undefined' == typeof(JSON.parse(localStorage[opts.namespace]).bookId) || opts.book_id != JSON.parse(localStorage[opts.namespace]).bookId))) {
             if (!$.isEmptyObject(localStorage[opts.namespace])) localStorage.removeItem(opts.namespace);
 
             if(opts.buildInternal) {
@@ -272,10 +272,13 @@
             // Raw data can be grabbed from localStorage
             return;
         }
-        $('[data-toggle="tooltip"]').tooltip();
-        // !!! Directly uses scalar hidden data. Generalize!
-        $.getScript($('link#approot').attr('href') + 'plugins/thoughtmesh/lib/bootbox.min.js', function(data, textStatus, jqxhr) {});
-
+        if(opts.platform == "scalar") {
+            $('[data-toggle="tooltip"]').tooltip();
+            // !!! Directly uses scalar hidden data. Generalize!
+            // John sez: Wordpress pulls this script in through the PHP, so it can stay as is. Maybe this whole
+            // conditional should move to renderScalar()?
+            $.getScript($('link#approot').attr('href') + 'plugins/thoughtmesh/lib/bootbox.min.js', function(data, textStatus, jqxhr) {});
+        }
     }; // $.fn.thoughtmesh
 
 
